@@ -1,0 +1,15 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-05] Base64 Encoded IDOR" %}
+{% block scenario %}Untuk menyamarkan ID numerik yang sederhana, developer melakukan encoding menggunakan Base64. Karena Base64 adalah skema encoding (bukan enkripsi), nilainya dapat dengan mudah di-decode dan dimanipulasi.{% endblock %}
+{% block objective %}Akses dokumen milik `agent_delta` (user ID 2).{% endblock %}
+{% block interactive %}
+    <p>Anda berhasil mengakses dokumen milik: <code>{{ owner.username }}</code>.</p>
+    <p><strong>Langkah Eksploitasi:</strong></p>
+    <ol>
+        <li>Salin bagian terakhir dari URL: <code>ZG9jX293bmVyOjE=</code></li>
+        <li>Gunakan tool Base64 decoder untuk melihat nilainya (hasilnya: <code>doc_owner:1</code>).</li>
+        <li>Ubah nilainya menjadi <code>doc_owner:2</code>.</li>
+        <li>Encode kembali string tersebut ke Base64 (hasilnya: <code>ZG9jX293bmVyOjI=</code>).</li>
+        <li>Gunakan hasil encode yang baru di URL.</li>
+    </ol>
+{% endblock %}

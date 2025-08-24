@@ -1,0 +1,11 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-07] Filename IDOR" %}
+{% block scenario %}Sistem unduhan file mengizinkan pengguna mengambil file berdasarkan nama yang diberikan di parameter query. Sistem ini rentan jika seorang penyerang bisa menebak nama file milik pengguna lain.{% endblock %}
+{% block objective %}Unduh file konfigurasi sistem rahasia yang bernama <code>system_config.cfg</code>.{% endblock %}
+{% block interactive %}
+    <p>File yang tersedia untuk Anda (operator_one):</p>
+    <ul>
+        <li><a href="/simulations/filename/download?filename=op1_report.pdf">op1_report.pdf</a></li>
+    </ul>
+    <p>Coba ubah nilai parameter <code>filename</code> di URL menjadi nama file lain, seperti <code>agD_notes.txt</code> atau <code>system_config.cfg</code>.</p>
+{% endblock %}	

@@ -1,0 +1,13 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-15] Wildcard API IDOR" %}
+{% block scenario %}Aplikasi memiliki endpoint API terdokumentasi, misal <code>/api/v4/users/me/invoices</code>. Namun, ada endpoint lain yang tidak terdokumentasi (misal: untuk admin) yang menggunakan parameter angka atau wildcard seperti <code>/api/v4/users/{user_id}/invoices</code> yang tidak terlindungi dengan baik.{% endblock %}
+{% block objective %}Temukan dan akses endpoint untuk melihat invoice milik pengguna lain (misal: user ID 1 dan 3).{% endblock %}
+{% block interactive %}
+    <p>Tools scanner API modern bisa melakukan "parameter fuzzing" untuk menemukan endpoint tersembunyi. Dalam simulasi ini, endpoint yang rentan adalah:</p>
+    <pre><code>/api/v4/users/{user_id}/invoices</code></pre>
+    <p>Coba akses URL berikut secara langsung di tab baru:</p>
+    <ul>
+        <li><a href="/api/v4/users/1/invoices" target="_blank">Lihat Invoice User 1</a></li>
+        <li><a href="/api/v4/users/2/invoices" target="_blank">Lihat Invoice User 2</a></li>
+    </ul>
+{% endblock %}

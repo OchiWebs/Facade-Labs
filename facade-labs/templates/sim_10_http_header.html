@@ -1,0 +1,10 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-10] Custom HTTP Header IDOR" %}
+{% block scenario %}Untuk menghindari terekspos di URL, aplikasi modern terkadang mengirim ID pengguna melalui custom HTTP header, seperti <code>X-User-ID</code>. Jika backend tidak memvalidasi header ini terhadap sesi pengguna, celah IDOR bisa terjadi.{% endblock %}
+{% block objective %}Dapatkan data profil milik `admin_zero` (user ID 3) dengan memodifikasi header <code>X-User-ID</code>.{% endblock %}
+{% block interactive %}
+    <p>Gunakan cURL atau Burp Suite untuk mengirim request ke <code>/api/v3/my-data</code> dengan header yang dimodifikasi.</p>
+    <p>Request untuk user Anda (operator_one):</p>
+    <pre><code>curl -H "X-User-ID: 1" http://127.0.0.1:5000/api/v3/my-data</code></pre>
+    <p>Ubah nilai header menjadi <code>2</code> atau <code>3</code>.</p>
+{% endblock %}

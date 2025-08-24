@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% set title = "[S-04] API Endpoint IDOR" %}
+{% block content %}
+<div class="card">
+    <h2>[S-04] API Endpoint IDOR</h2>
+    <p>Halaman ini hanyalah pemberitahuan. Simulasi sesungguhnya terjadi pada endpoint API yang Anda akses langsung.</p>
+    <p><strong>Skenario:</strong> Sebuah endpoint API publik di <code>/api/v1/users/{user_id}</code> dirancang untuk menyediakan data pengguna dalam format JSON. Endpoint ini tidak menerapkan pemeriksaan otorisasi yang memadai.</p>
+    <p><strong>Tujuan:</strong> Dapatkan data JSON untuk `admin_zero` (user ID 3) dengan memanipulasi ID di URL endpoint.</p>
+    <a href="/api/v1/users/1" target="_blank" class="btn">Buka API Endpoint untuk User 1</a>
+</div>
+{% endblock %}

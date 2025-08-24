@@ -1,0 +1,31 @@
+:root {
+    --bg-dark: #121212; --surface-dark: #1e1e1e; --primary-color: #00aaff;
+    --text-light: #e0e0e0; --text-secondary: #8e8e8e; --border-color: #333333;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+body { background-color: var(--bg-dark); color: var(--text-light); margin: 0; line-height: 1.6; }
+.container { max-width: 900px; margin: 2rem auto; padding: 0 2rem; }
+header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; border-bottom: 1px solid var(--border-color); }
+header .logo { font-size: 1.5rem; font-weight: 700; }
+header .logo a { text-decoration: none; color: var(--text-light); }
+header .logo span { color: var(--primary-color); }
+nav a { color: var(--text-secondary); text-decoration: none; margin-left: 1.5rem; transition: color 0.2s ease; }
+nav a:hover { color: var(--primary-color); }
+.card { background-color: var(--surface-dark); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; margin-bottom: 1.5rem; }
+h1, h2, h3 { margin-top: 0; color: var(--text-light); }
+h2 { border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; margin-bottom: 1.5rem; }
+.sim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+.sim-card { background-color: var(--surface-dark); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; transition: border-color 0.2s ease, transform 0.2s ease; }
+.sim-card:hover { border-color: var(--primary-color); transform: translateY(-3px); }
+.sim-card h3 { margin-top: 0; font-size: 1.1rem; }
+.sim-card p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; }
+.sim-card a { color: var(--primary-color); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+footer { text-align: center; padding: 2rem 0; margin-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9rem; }
+.btn { background-color: var(--primary-color); color: var(--bg-dark); padding: 0.6rem 1.2rem; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; text-decoration: none; display: inline-block; }
+.btn:hover { opacity: 0.85; }
+.flash { padding: 1rem; border-radius: 5px; margin-bottom: 1rem; }
+.flash.success { background-color: #053318; border: 1px solid #0c6b34; }
+.flash.error { background-color: #4d0f1a; border: 1px solid #a62139; }
+code { background-color: var(--bg-dark); padding: 0.2rem 0.4rem; border-radius: 4px; border: 1px solid var(--border-color); font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.9em; }
+pre { background-color: #0d0d0d; padding: 1rem; border-radius: 5px; white-space: pre-wrap; word-break: break-all; }
+ol, ul { padding-left: 20px; }

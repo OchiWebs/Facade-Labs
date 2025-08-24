@@ -1,0 +1,15 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-12] JWT Payload IDOR" %}
+{% block scenario %}API profil di <code>/api/jwt/profile</code> mengandalkan JSON Web Token (JWT) untuk identifikasi. User ID (<code>uid</code>) disimpan di dalam payload token. Server memvalidasi signature token, namun terlalu percaya pada isi payload-nya.{% endblock %}
+{% block objective %}Dapatkan data profil `admin_zero` (user ID 3) dengan memodifikasi payload JWT.{% endblock %}
+{% block interactive %}
+    <p>Token untuk Agent (uid: 2):</p>
+    <pre><code>{{ data.jwt_token_user_2 }}</code></pre>
+    <p><strong>Langkah:</strong></p>
+    <ol>
+        <li>Decode token di <a href="https://jwt.io" target="_blank">jwt.io</a>.</li>
+        <li>Ubah payload <code>"uid": 2</code> menjadi <code>"uid": 3</code>.</li>
+        <li>Re-sign token menggunakan secret: <code>{{ JWT_SECRET }}</code>.</li>
+        <li>Gunakan token baru di header <code>Authorization: Bearer [TOKEN_BARU]</code>.</li>
+    </ol>
+{% endblock %}

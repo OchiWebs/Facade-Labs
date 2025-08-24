@@ -1,0 +1,13 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-03] Query Parameter IDOR" %}
+{% block scenario %}ID sebuah invoice tidak ditampilkan di URL path, melainkan sebagai parameter query (bagian setelah tanda tanya `?`). Mekanisme ini seringkali luput dari aturan keamanan URL path.{% endblock %}
+{% block objective %}Akses invoice milik `agent_delta` (user ID 2) dengan mengubah nilai parameter <code>id</code>.{% endblock %}
+{% block interactive %}
+    <p>Detail Invoice yang Sedang Diakses:</p>
+    <ul>
+        <li><strong>Invoice ID:</strong> <code>{{ invoice_id }}</code></li>
+        <li><strong>Detail:</strong> <code>{{ invoice.details }}</code></li>
+        <li><strong>Milik User ID:</strong> <code>{{ invoice.user_id }}</code></li>
+    </ul>
+    <p>Ubah nilai <code>id</code> di address bar dari <code>INV2025001</code> menjadi <code>INV2025002</code>.</p>
+{% endblock %}

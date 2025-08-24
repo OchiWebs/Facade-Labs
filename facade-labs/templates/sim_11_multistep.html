@@ -1,0 +1,23 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-11] Multi-Step IDOR" %}
+{% block scenario %}Kerentanan ini tidak bisa dieksploitasi dalam satu langkah. Anda (sebagai user ID 1) harus melakukan Aksi 1 (membuat job ekspor) untuk mendapatkan ID job. Kemudian, di Aksi 2 (mengunduh hasil), Anda mengeksploitasi IDOR dengan ID job tersebut.{% endblock %}
+{% block objective %}Buat sebuah job ekspor, lalu temukan cara untuk menebak ID job milik pengguna lain (misalnya dengan increment ID) untuk mengunduh data mereka.{% endblock %}
+{% block interactive %}
+    <button id="create-job-btn" class="btn">Aksi 1: Buat Job Ekspor</button>
+    <div id="result" style="margin-top: 1.5rem;"></div>
+    <script>
+        document.getElementById('create-job-btn').addEventListener('click', () => {
+            fetch('/simulations/multistep/export', { method: 'POST' })
+                .then(res => res.json())
+                .then(data => {
+                    const resultDiv = document.getElementById('result');
+                    resultDiv.innerHTML = `<p>Job berhasil dibuat!</p>
+                    <ul>
+                        <li>Job ID: <code>${data.job_id}</code></li>
+                        <li>URL Unduhan (Aksi 2): <a href="/simulations/multistep/download?job_id=${data.job_id}" target="_blank">/download?job_id=${data.job_id}</a></li>
+                    </ul>
+                    <p>Sekarang, coba akses URL unduhan dengan <code>job_id</code> yang lebih rendah (misal: 9000, jika ini job pertama).</p>`;
+                });
+        });
+    </script>
+{% endblock %}

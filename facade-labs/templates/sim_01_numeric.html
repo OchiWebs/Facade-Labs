@@ -1,0 +1,12 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-01] Numeric IDOR" %}
+{% block scenario %}Aplikasi menampilkan profil pengguna berdasarkan ID numerik yang ada di URL path. Sistem ini tidak memvalidasi apakah pengguna yang meminta berhak melihat profil tersebut.{% endblock %}
+{% block objective %}Akses profil milik `agent_delta` (user ID 2) dan `admin_zero` (user ID 3).{% endblock %}
+{% block interactive %}
+    <p>Profil yang sedang Anda lihat:</p>
+    <ul>
+        <li><strong>Username:</strong> <code>{{ user.username }}</code></li>
+        <li><strong>Role:</strong> <code>{{ user.role }}</code></li>
+    </ul>
+    <p>Ubah angka di address bar browser Anda untuk melihat profil lain.</p>
+{% endblock %}

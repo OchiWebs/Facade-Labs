@@ -1,0 +1,11 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-14] Mass Assignment IDOR" %}
+{% block scenario %}Sebuah endpoint API untuk update profil (<code>/api/v4/profile/update</code>) menerima objek JSON dan menyimpannya langsung ke database. Ini membuka celah "mass assignment", di mana penyerang bisa menyuntikkan field yang seharusnya tidak boleh diubah, seperti `role`.{% endblock %}
+{% block objective %}Ubah role Anda dari `agent` menjadi `admin` dengan mengirimkan field tambahan di dalam JSON.{% endblock %}
+{% block interactive %}
+    <p>Profil Anda saat ini (agent_delta):</p>
+    <pre id="current-profile"><code>{{ data.mass_assignment_user | tojson(indent=2) }}</code></pre>
+    <p>Kirim request POST ke <code>/api/v4/profile/update</code> dengan body JSON. Body yang normal adalah <code>{"email": "new.email@facade.tech"}</code>.</p>
+    <p>Coba suntikkan field role:</p>
+    <pre><code>{"email": "hacked@facade.tech", "role": "admin"}</code></pre>
+{% endblock %}

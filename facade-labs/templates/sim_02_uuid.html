@@ -1,0 +1,18 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-02] UUID IDOR" %}
+{% block scenario %}Aplikasi menggunakan UUID (Universally Unique Identifier) yang sulit ditebak untuk mengakses objek pesanan. Namun, karena suatu kesalahan, UUID untuk pesanan lain bocor di halaman riwayat atau log.{% endblock %}
+{% block objective %}Gunakan UUID yang "bocor" untuk mengakses detail pesanan milik `agent_delta` (user ID 2).{% endblock %}
+{% block interactive %}
+    <p>Detail Pesanan yang Sedang Diakses:</p>
+    <ul>
+        <li><strong>Item:</strong> <code>{{ order.item }}</code></li>
+        <li><strong>Milik User ID:</strong> <code>{{ order.user_id }}</code></li>
+    </ul>
+    <p><strong>Simulasi UUID Bocor:</strong></p>
+    <p>Ganti UUID di address bar dengan salah satu di bawah ini:</p>
+    <ul>
+    {% for id in all_orders %}
+        <li><code>{{ id }}</code></li>
+    {% endfor %}
+    </ul>
+{% endblock %}

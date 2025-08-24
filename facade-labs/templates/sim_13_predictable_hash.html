@@ -1,0 +1,14 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-13] Predictable Hash IDOR" %}
+{% block scenario %}Developer menyembunyikan ID numerik dengan melakukan hashing (MD5). Namun, algoritma hashing yang digunakan bersifat predictable (ID + salt statis), sehingga penyerang dapat mereplikasi hash untuk ID lain.{% endblock %}
+{% block objective %}Akses halaman profil `agent_delta` (user ID 2) dengan membuat sendiri hash yang benar.{% endblock %}
+{% block interactive %}
+    <p>Anda sedang mengakses profil dengan hash:</p>
+    <pre><code>{{ request.view_args.hashed_id }}</code></pre>
+    <p><strong>Informasi Bocor:</strong></p>
+    <ul>
+        <li>Algoritma: MD5</li>
+        <li>Pola: <code>f"{user_id}:facade-salt"</code></li>
+    </ul>
+    <p>Gunakan tool online atau script untuk membuat hash MD5 dari string <code>2:facade-salt</code> dan gunakan hasilnya di URL.</p>
+{% endblock %}

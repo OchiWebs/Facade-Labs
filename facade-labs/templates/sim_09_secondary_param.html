@@ -1,0 +1,17 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-09] Secondary Parameter IDOR" %}
+{% block scenario %}Sebuah halaman produk menampilkan review. URL utama (<code>/product/prod123</code>) aman, namun terdapat parameter filter sekunder (<code>?reviews_from_user=1</code>) yang tidak divalidasi dengan benar.{% endblock %}
+{% block objective %}Lihat review produk yang ditulis oleh `agent_delta` (user ID 2) dengan memanipulasi parameter sekunder.{% endblock %}
+{% block interactive %}
+    <p>Menampilkan review untuk produk <code>prod123</code> dari User ID <code>{{ user_id }}</code>:</p>
+    {% if reviews %}
+        {% for review in reviews %}
+        <div style="border-left: 3px solid var(--primary-color); padding-left: 1rem; margin-bottom: 1rem;">
+            <p>"{{ review.comment }}"</p>
+        </div>
+        {% endfor %}
+    {% else %}
+        <p>Tidak ada review dari user ini.</p>
+    {% endif %}
+    <p>Ubah nilai parameter <code>reviews_from_user</code> di address bar.</p>
+{% endblock %}

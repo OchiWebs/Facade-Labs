@@ -1,0 +1,10 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-06] POST Body IDOR" %}
+{% block scenario %}Sebuah fitur internal menggunakan API endpoint untuk mengambil metadata file. ID file dikirim dalam format JSON di dalam body request POST, sehingga tidak terlihat di URL.{% endblock %}
+{% block objective %}Gunakan cURL atau Burp Suite untuk mengirim request POST ke <code>/api/v2/file-metadata</code> dan dapatkan metadata untuk file milik admin (ID: <code>F201</code>).{% endblock %}
+{% block interactive %}
+    <p>Gunakan perintah cURL berikut sebagai contoh. Ubah nilai <code>file_id</code>.</p>
+    <pre><code>curl -X POST -H "Content-Type: application/json" \
+-d '{"file_id": "F101"}' \
+http://127.0.0.1:5000/api/v2/file-metadata</code></pre>
+{% endblock %}

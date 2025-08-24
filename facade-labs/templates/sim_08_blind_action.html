@@ -1,0 +1,21 @@
+{% extends "sim_base.html" %}
+{% set sim_title = "[S-08] Blind Action IDOR" %}
+{% block scenario %}Aplikasi mengizinkan Anda menghapus postingan milik Anda sendiri. Aksi penghapusan ini dilakukan tanpa menampilkan konten postingan (blind action). Apakah validasi di backend cukup kuat?{% endblock %}
+{% block objective %}Hapus postingan milik `agent_delta` (ID: <code>P5002</code>) meskipun Anda login sebagai `operator_one`.{% endblock %}
+{% block interactive %}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}{% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}{% endif %}
+    {% endwith %}
+    <p>Daftar Postingan Saat Ini:</p>
+    {% for id, post in data.blind_action_posts.items() %}
+    <div style="display: flex; justify-content: space-between; align-items: center; border: 1px solid var(--border-color); padding: 0.5rem 1rem; border-radius: 5px; margin-bottom: 0.5rem;">
+        <span>{{ post.title }} (ID: <code>{{ id }}</code>)</span>
+        <form action="/simulations/blind-action/post/delete/{{ id }}" method="POST">
+            <button type="submit" class="btn" style="background-color: #a62139; padding: 0.3rem 0.8rem;">Hapus</button>
+        </form>
+    </div>
+    {% endfor %}
+    <p>Gunakan Developer Tools untuk memodifikasi ID yang dikirim saat menekan tombol "Hapus".</p>
+{% endblock %}
