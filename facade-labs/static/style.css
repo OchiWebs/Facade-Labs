@@ -14,18 +14,27 @@ nav a:hover { color: var(--primary-color); }
 .card { background-color: var(--surface-dark); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; margin-bottom: 1.5rem; }
 h1, h2, h3 { margin-top: 0; color: var(--text-light); }
 h2 { border-bottom: 1px solid var(--border-color); padding-bottom: 0.8rem; margin-bottom: 1.5rem; }
-.sim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
-.sim-card { background-color: var(--surface-dark); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; transition: border-color 0.2s ease, transform 0.2s ease; }
-.sim-card:hover { border-color: var(--primary-color); transform: translateY(-3px); }
-.sim-card h3 { margin-top: 0; font-size: 1.1rem; }
-.sim-card p { color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; }
-.sim-card a { color: var(--primary-color); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
 footer { text-align: center; padding: 2rem 0; margin-top: 2rem; border-top: 1px solid var(--border-color); color: var(--text-secondary); font-size: 0.9rem; }
 .btn { background-color: var(--primary-color); color: var(--bg-dark); padding: 0.6rem 1.2rem; border: none; border-radius: 5px; cursor: pointer; font-weight: 600; text-decoration: none; display: inline-block; }
 .btn:hover { opacity: 0.85; }
-.flash { padding: 1rem; border-radius: 5px; margin-bottom: 1rem; }
-.flash.success { background-color: #053318; border: 1px solid #0c6b34; }
-.flash.error { background-color: #4d0f1a; border: 1px solid #a62139; }
 code { background-color: var(--bg-dark); padding: 0.2rem 0.4rem; border-radius: 4px; border: 1px solid var(--border-color); font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.9em; }
 pre { background-color: #0d0d0d; padding: 1rem; border-radius: 5px; white-space: pre-wrap; word-break: break-all; }
 ol, ul { padding-left: 20px; }
+.challenge-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.challenge-card { background-color: var(--surface-dark); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; transition: transform 0.2s ease, box-shadow 0.2s ease; position: relative; overflow: hidden; }
+.challenge-card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0,0,0,0.2); }
+.challenge-card h3 { margin-top: 0; color: var(--primary-color); }
+.challenge-card .category { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem; }
+.challenge-card a { color: var(--text-light); text-decoration: none; font-weight: 600; }
+.challenge-card a::after { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+.challenge-card.solved { border-left: 5px solid #28a745; }
+.challenge-card.solved::before { content: 'SOLVED'; position: absolute; top: 10px; right: -30px; background: #28a745; color: white; padding: 2px 30px; font-size: 0.7rem; font-weight: bold; transform: rotate(45deg); }
+.challenge-page .objective { background-color: rgba(0, 170, 255, 0.1); border-left: 4px solid var(--primary-color); padding: 1rem 1.5rem; border-radius: 5px; margin-bottom: 2rem; }
+#flag-form input { width: 100%; padding: 0.8rem; background-color: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 5px; color: var(--text-light); font-size: 1rem; margin-bottom: 1rem; box-sizing: border-box; }
+.feedback { padding: 0.8rem; border-radius: 5px; margin-top: 1rem; display: none; font-weight: 600; }
+.feedback.success { background-color: #28a745; color: white; }
+.feedback.error { background-color: #dc3545; color: white; }
+.flag-display { background-color: #28a745; color: white; padding: 1rem; border-radius: 5px; margin-top: 2rem; text-align: center; font-family: 'SF Mono', 'Fira Code', monospace; word-break: break-all; }
+.flash { padding: 1rem; border-radius: 5px; margin-bottom: 1rem; }
+.flash.success { background-color: #053318; border: 1px solid #0c6b34; }
+.flash.error { background-color: #4d0f1a; border: 1px solid #a62139; }

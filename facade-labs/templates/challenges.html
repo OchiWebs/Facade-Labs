@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% set title = "Challenges" %}
+{% block content %}
+<h2>Challenge Dashboard</h2>
+
+<h3 style="color: var(--primary-color);">Foundation Tier</h3>
+<div class="challenge-grid">
+    <div class="challenge-card" data-challenge-id="s01"><a href="/challenges/numeric"><h3>[S-01] Numeric IDOR</h3><div class="category">Foundation / 100 pts</div><p>Akses objek via ID numerik berurutan di URL path.</p></a></div>
+    <div class="challenge-card" data-challenge-id="s02"><a href="/challenges/uuid"><h3>[S-02] UUID IDOR</h3><div class="category">Foundation / 150 pts</div><p>Gunakan UUID yang bocor untuk melihat detail pesanan.</p></a></div>
+    <div class="challenge-card" data-challenge-id="s03"><a href="/challenges/query"><h3>[S-03] Query Parameter IDOR</h3><div class="category">Foundation / 150 pts</div><p>ID objek terekspos sebagai parameter di URL query string.</p></a></div>
+    <div class="challenge-card" data-challenge-id="s04"><a href="/challenges/api_json"><h3>[S-04] API Endpoint IDOR</h3><div class="category">Foundation / 200 pts</div><p>Endpoint API mengembalikan data sensitif tanpa otorisasi.</p></a></div>
+    <div class="challenge-card" data-challenge-id="s05"><a href="/challenges/base64"><h3>[S-05] Base64 Encoded IDOR</h3><div class="category">Foundation / 200 pts</div><p>Decode, ubah, dan encode ulang ID yang disamarkan.</p></a></div>
+</div>
+
+<h3 style="color: var(--primary-color); margin-top: 3rem;">Advanced Tier</h3>
+<div class="challenge-grid">
+    <div class="challenge-card" data-challenge-id="s06"><a href="/challenges/post_body"><h3>[S-06] POST Body IDOR</h3><div class="category">Advanced / 250 pts</div><p>ID dikirim dalam body request JSON, tidak terlihat di URL.</p></a></div>
+    <div class="challenge-card" data-challenge-id="s07"><a href="/challenges/filename"><h3>[S-07] Filename IDOR</h3><div class="category">Advanced / 300 pts</div><p>Mengakses file dengan menebak nama file milik user lain.</p></a></div>
+    <div class="challenge-card" data-challenge-id="s08"><a href="/challenges/blind_action"><h3>[S-08] Blind Action IDOR</h3><div class="category">Advanced / 350 pts</div><p>Melakukan aksi (misal: hapus) pada objek lain tanpa melihat data.</p></a></div>
+    <div class="challenge-card" data-challenge-id="s09"><a href="/challenges/secondary_param"><h3>[S-09] Secondary Parameter</h3><div class="category">Advanced / 300 pts</div><p>Parameter filter yang tidak utama ternyata rentan IDOR.</p></a></div>
+    <div class="challenge-card" data-challenge-id="s10"><a href="/challenges/http_header"><h3>[S-10] HTTP Header IDOR</h3><div class="category">Advanced / 350 pts</div><p>ID pengguna dikirim via header non-standar seperti X-User-ID.</p></a></div>
+</div>
+
+<h3 style="color: var(--primary-color); margin-top: 3rem;">Expert Tier</h3>
+<div class="challenge-grid">
+    <div class="challenge-card" data-challenge-id="s11"><a href="/challenges/multistep"><h3>[S-11] Multi-Step IDOR</h3><div class="category">Expert / 400 pts</div><p>Eksploitasi membutuhkan rantai dua request atau lebih.</p></a></div>
+    <div class="challenge-card" data-challenge-id="s12"><a href="/challenges/jwt"><h3>[S-12] JWT Payload IDOR</h3><div class="category">Expert / 500 pts</div><p>Memanipulasi user ID di dalam payload JSON Web Token.</p></a></div>
+    <div class="challenge-card" data-challenge-id="s13"><a href="/challenges/predictable_hash"><h3>[S-13] Predictable Hash IDOR</h3><div class="category">Expert / 450 pts</div><p>Mereplikasi algoritma hashing yang lemah untuk menebak ID.</p></a></div>
+    <div class="challenge-card" data-challenge-id="s14"><a href="/challenges/mass_assignment"><h3>[S-14] Mass Assignment</h3><div class="category">Expert / 450 pts</div><p>Menyuntikkan field terlarang (cth: `role`) ke dalam request.</p></a></div>
+    <div class="challenge-card" data-challenge-id="s15"><a href="/challenges/wildcard_api"><h3>[S-15] Wildcard API IDOR</h3><div class="category">Expert / 400 pts</div><p>Mengeksploitasi endpoint API dengan parameter wildcard.</p></a></div>
+</div>
+{% endblock %}
