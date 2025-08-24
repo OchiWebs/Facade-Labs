@@ -30,7 +30,7 @@ Metode ini membungkus seluruh aplikasi ke dalam sebuah kontainer, sehingga Anda 
 1.  **Clone Repository Ini**
     Buka terminal atau Git Bash dan jalankan perintah berikut:
     ```bash
-    git clone [https://github.com/OchiWebs/Facade-Labs.git]
+    git clone https://github.com/OchiWebs/Facade-Labs.git
     cd facade-labs
     ```
 
@@ -65,8 +65,8 @@ Gunakan metode ini jika Anda tidak ingin atau tidak bisa menggunakan Docker.
 
 1.  **Clone Repository Ini**
     ```bash
-    git clone [URL_REPOSITORY_ANDA]
-    cd Facade-Labs
+    git clone https://github.com/OchiWebs/Facade-Labs.git
+    cd facade-labs
     ```
 
 2.  **(Opsional) Buat Virtual Environment**
